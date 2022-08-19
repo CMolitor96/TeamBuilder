@@ -1,5 +1,6 @@
 const fs = require('fs');
 const inquirer = require('inquirer');
+const { resolve } = require('path');
 const Employee = require('./lib/employee');
 const Engineer = require('./lib/engineer');
 const Intern = require('./lib/intern');
@@ -92,55 +93,62 @@ const internQuestions = [
     },
 ];
 
-// function initialQuestions() {
-//     inquirer
-//     .prompt(managerQuestions).then((response) => {
-//         console.log(response);
-//         console.log(response.addEmployee);
-//     });
-// }
+// const addNewQuestion = [
+//     {
+//         type: 'list',
+//         message: 'Add employee: ',
+//         choices: ['Engineer', 'Intern', 'I am finished building my team'],
+//         name: 'addEmployee'
+//     },
+// ]
 
-let testInitialPromise = new Promise((resolve, reject) => {
-    inquirer
-    .prompt(managerQuestions).then((response) => {
-        resolve(response);
+function manager() {
+    let manager = new Promise((resolve, reject) => {
+        inquirer
+        .prompt(managerQuestions).then((response) => {
+            resolve(response);
+        });
+    })
+
+    manager.then((response) => {
+        console.log(response);
+        console.log(response.addEmployee);
+        const manager = new Manager(response.managerName, response.managerId, response.managerEmail, response.managerOffice);
+        console.log(manager);
     });
-})
+}
 
-testInitialPromise.then((response) => {
-    console.log(response);
-    console.log(response.addEmployee);
-});
+function engineer() {
+    let engineer = new Promise((resolve, reject) => {
+        inquirer
+        .prompt(engineerQuestions).then((response) => {
+            resolve(response);
+        });
+    });
 
-// function engineer() {
-//     inquirer
-//     .prompt(engineerQuestions).then((response) => {
-//         console.log(response);
-//         console.log(`Engineer Add Employee: ${response.addEmployee}`);
-//     });
-// }
+    engineer.then((response) => {
+        console.log(response);
+        console.log(response.addEmployee);
+    });
+}
 
-// function intern() {
-//     inquirer
-//     .prompt(internQuestions).then((response) => {
-//         console.log(response);
-//         console.log(`Intern Add Employee: ${response.addEmployee}`);
-//     });
-// }
+function intern() {
+    let intern = new Promise((resolve, reject) => {
+        inquirer
+        .prompt(internQuestions).then((response) => {
+            resolve(response);
+        });
+    });
 
-// function start() {
-//     initialQuestions();
-//     while (response.addEmployee != 'I am finished building my team') {
-//         if (response.addEmployee === 'Engineer') {
-//             engineer();
-//         } else {
-//             intern();
-//         }
-//     }
-//     console.log('Finished adding members');
-// }
+    intern.then((response) => {
+        console.log(response);
+        console.log(response.addEmployee);
+    });
+}
 
-// start();
+
+manager();
+// engineer();
 
 
 

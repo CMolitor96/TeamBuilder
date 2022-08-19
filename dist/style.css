@@ -1,0 +1,10 @@
+* {
+    box-sizing: border-box;
+    padding: 0px;
+    margin: 0px;
+}
+
+header {
+    text-align: center;
+    font-size: 34px;
+}
