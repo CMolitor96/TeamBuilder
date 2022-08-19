@@ -1,10 +1,23 @@
-* {
-    box-sizing: border-box;
-    padding: 0px;
-    margin: 0px;
+body {
+    background-color: #d1932e;
 }
 
 header {
     text-align: center;
     font-size: 34px;
+    border: 2px solid teal;
+    background-color: teal;
+    box-shadow: 5px 10px 50px red;
+}
+
+footer {
+    text-align: center;
+    font-size: 34px;
+    border: 2px solid teal;
+    background-color: teal;
+    box-shadow: 5px 10px 50px red;
+}
+
+#hoverZoom:hover {
+    transform: scale(1.05);
 }

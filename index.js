@@ -107,25 +107,31 @@ function manager() {
     // let manager = new Promise((resolve, reject) => {
     inquirer
         .prompt(managerQuestions).then((response) => {
-            console.log(response);
-            console.log(response.addEmployee);
+            // console.log(response);
+            // console.log(response.addEmployee);
             employeeArray.push(new Manager(response.managerName, response.managerId, response.managerEmail, response.managerOffice));
             return repeat(response);
         }).then(() => {
-            console.log(employeeArray);
+            console.log('Enjoy your new team roster!');
+
+            //This is where to put string literal for html template
+            //bascically add html code and append to file for every individual employee you make
+            // for initial manager write to file starting lines of html including head, and then manager card
+            //then for every employee just the div bootstrap card with info filled in
+            //then at very end append to file the closing tags for body script, and html
+            // make function for write me for engineer and intern
 
 
 
 
-            
         })
 }
 
 function engineer() {
     return inquirer
         .prompt(engineerQuestions).then((response) => {
-            console.log(response);
-            console.log(response.addEmployee);
+            // console.log(response);
+            // console.log(response.addEmployee);
             employeeArray.push(new Engineer(response.engineerName, response.engineerId, response.engineerEmail, response.engineerGithub));
             return repeat(response);
         });
@@ -144,8 +150,8 @@ function repeat(response) {
 function intern() {
     return inquirer
         .prompt(internQuestions).then((response) => {
-            console.log(response);
-            console.log(response.addEmployee);
+            // console.log(response);
+            // console.log(response.addEmployee);
             employeeArray.push(new Intern(response.internName, response.internId, response.internEmail, response.internSchool));
             return repeat(response);
         });
