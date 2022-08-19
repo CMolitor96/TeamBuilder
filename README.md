@@ -1,1 +1,47 @@
-# TeamBuilder
+# **Team Roster Generator**
+
+## Project Description
+The Team Roster Generator is a javascript script that generates a formatted HTML page based off of user input that has information of all members in a team . Current members that can be added are a team manager, with name, email, office number, and ID. A team engineer, with name, ID, email, and link to their GitHub account. Intern with name, ID, email, and current school. This project utilizes the inquirer package to prompt for user input. Project also has unit testing of classes using the jest package.
+
+## Table of Contents:
+[Project Install](#project-install)
+
+[License](#license)
+
+[Project Usage](#project-usage)
+
+[Project Contribution](#project-contribution)
+
+[Project Testing](#tests)
+
+[Questions](#questions)
+
+## Project Install:
+Simply run the index.js file in your terminal with node and the prompts will begin
+
+How to run application in command line
+![Image of executing application in command line](./assets/images/Execute.png)
+
+
+## License:
+Please click the license badge for more information on the license under which this project is covered.
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+## Project Usage:
+Simply type in your response to each question. If your response is invalid, for example entering abc123 for an email, the program will let you know and prompt you to reenter your response. When you have entered all responses for an individual, you will be prompted to either add another team member or stop. Adding another team member will prompt you again for their information, and finishing your build will finish the script and you will be left with a deployable html file filled out with all of your team member's information
+
+Halfway through filling out inputs:
+![Halfway through filling out sections. Displays a few of the text input sections and the list choice](./assets/images/In%20Progress.png)
+
+Finished with inputs:
+![Application executed and all sections filled out. Not pictured is generated README.md file](./assets/images/Filled%20Out.png)
+
+## Project Contribution:
+Open Source
+## Tests:
+Testing Instructions
+## Questions:
+GitHub Username: CMolitor96
+
+GitHub profile: (https://github.com/CMolitor96)
+
+Please email me at (charlie.molitor.38@gmail.com) for any further questions regarding this application.
