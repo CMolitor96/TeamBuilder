@@ -245,7 +245,7 @@ function manager() {
     inquirer
         .prompt(managerQuestions).then((response) => {
             employeeArray.push(new Manager(response.managerName, response.managerId, response.managerEmail, response.managerOffice));
-            fs.writeFile('index1.html', managerHTML(response), (err) => {
+            fs.writeFile('index.html', managerHTML(response), (err) => {
                 if (err) {
                     console.log(err);
                 }
@@ -253,7 +253,7 @@ function manager() {
             return repeat(response);
         }).then(() => {
             console.log('\nEnjoy your new team roster!');
-            fs.appendFile('index1.html', footerHTML(), (err) => {
+            fs.appendFile('index.html', footerHTML(), (err) => {
                 if (err) {
                     console.log(err);
                 }
@@ -330,7 +330,7 @@ function engineer() {
     return inquirer
         .prompt(engineerQuestions).then((response) => {
             employeeArray.push(new Engineer(response.engineerName, response.engineerId, response.engineerEmail, response.engineerGithub));
-            fs.appendFile('index1.html', engineerHTML(response), (err) => {
+            fs.appendFile('index.html', engineerHTML(response), (err) => {
                 if (err) {
                     console.log(err);
                 }
@@ -375,7 +375,7 @@ function intern() {
             // console.log(response);
             // console.log(response.addEmployee);
             employeeArray.push(new Intern(response.internName, response.internId, response.internEmail, response.internSchool));
-            fs.appendFile('index1.html', internHTML(response), (err) => {
+            fs.appendFile('index.html', internHTML(response), (err) => {
                 if (err) {
                     console.log(err);
                 }
