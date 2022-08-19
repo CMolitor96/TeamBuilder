@@ -102,52 +102,58 @@ const internQuestions = [
 //     },
 // ]
 
+let employeeArray = [];
 function manager() {
-    let manager = new Promise((resolve, reject) => {
-        inquirer
+    // let manager = new Promise((resolve, reject) => {
+    inquirer
         .prompt(managerQuestions).then((response) => {
-            resolve(response);
-        });
-    })
+            console.log(response);
+            console.log(response.addEmployee);
+            employeeArray.push(new Manager(response.managerName, response.managerId, response.managerEmail, response.managerOffice));
+            return repeat(response);
+        }).then(() => {
+            console.log(employeeArray);
 
-    manager.then((response) => {
-        console.log(response);
-        console.log(response.addEmployee);
-        const manager = new Manager(response.managerName, response.managerId, response.managerEmail, response.managerOffice);
-        console.log(manager);
-    });
+
+
+
+            
+        })
 }
 
 function engineer() {
-    let engineer = new Promise((resolve, reject) => {
-        inquirer
+    return inquirer
         .prompt(engineerQuestions).then((response) => {
-            resolve(response);
+            console.log(response);
+            console.log(response.addEmployee);
+            employeeArray.push(new Engineer(response.engineerName, response.engineerId, response.engineerEmail, response.engineerGithub));
+            return repeat(response);
         });
-    });
+}
 
-    engineer.then((response) => {
-        console.log(response);
-        console.log(response.addEmployee);
-    });
+function repeat(response) {
+    if (response.addEmployee === 'Engineer') {
+        return engineer();
+    } else if (response.addEmployee === 'Intern') {
+        return intern();
+    } else {
+        return;                
+    }
 }
 
 function intern() {
-    let intern = new Promise((resolve, reject) => {
-        inquirer
+    return inquirer
         .prompt(internQuestions).then((response) => {
-            resolve(response);
+            console.log(response);
+            console.log(response.addEmployee);
+            employeeArray.push(new Intern(response.internName, response.internId, response.internEmail, response.internSchool));
+            return repeat(response);
         });
-    });
-
-    intern.then((response) => {
-        console.log(response);
-        console.log(response.addEmployee);
-    });
 }
 
 
 manager();
+// console.log(employeeArray);
 // engineer();
 
 
