@@ -21,7 +21,11 @@ Please click the license badge for more information on the license under which t
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Project Usage:
-Simply type in your response to each question. If your response is invalid, for example entering abc123 for an email, the program will let you know and prompt you to reenter your response. When you have entered all responses for an individual, you will be prompted to either add another team member or stop. Adding another team member will prompt you again for their information, and finishing your build will finish the script and you will be left with a deployable html file filled out with all of your team member's information
+Simply type in your response to each question. If your response is invalid, for example entering abc123 for an email, the program will let you know and prompt you to reenter your response. When you have entered all responses for an individual, you will be prompted to either add another team member or stop. Adding another team member will prompt you again for their information, and finishing your build will finish the script and you will be left with a deployable html file filled out with all of your team member's information.
+
+Picture detailing filled out manager details, and option to add another team member of finish build:
+<img width="342" alt="Screen Shot 2022-08-19 at 1 36 30 PM" src="https://user-images.githubusercontent.com/103666997/185703374-f234e9a3-989f-4daf-993a-ae0d5b2398bd.png">
+
 
 
 ## Questions:
