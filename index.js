@@ -1,6 +1,5 @@
 const fs = require('fs');
 const inquirer = require('inquirer');
-const { resolve } = require('path');
 const Employee = require('./lib/employee');
 const Engineer = require('./lib/engineer');
 const Intern = require('./lib/intern');
@@ -11,21 +10,69 @@ const managerQuestions = [
         type: 'input',
         message: 'Team Manager Name: ',
         name: 'managerName',
+        //Validates strings with spaces and letters only
+        validate: function (managerName) {
+  
+            valid = /^[A-Za-z\s]*$/g.test(managerName)
+
+            if (valid) {
+                return true;
+            } else {
+                console.log(" \n Please enter a valid name")
+                return false;
+            }
+        }
     },
     {
         type: 'input',
         message: 'Employee ID: ',
         name: 'managerId',
+        //Validates strings with numbers only
+        validate: function (managerId) {
+  
+            valid = /^[0-9]+$/g.test(managerId)
+
+            if (valid) {
+                return true;
+            } else {
+                console.log(" \n Please enter a valid number")
+                return false;
+            }
+        }
     },
     {
         type: 'input',
         message: 'Email Address: ',
         name: 'managerEmail',
+        //Validate function taken from https://gist.github.com/Amitabh-K/ae073eea3d5207efaddffde19b1618e8
+        validate: function (managerEmail) {
+  
+            valid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(managerEmail)
+
+            if (valid) {
+                return true;
+            } else {
+                console.log("\n Please enter a valid email")
+                return false;
+            }
+        }
     },
     {
         type: 'input',
         message: 'Office Number: ',
         name: 'managerOffice',
+        //Validates strings with numbers only
+        validate: function (managerOffice) {
+  
+            valid = /^[0-9]+$/g.test(managerOffice)
+
+            if (valid) {
+                return true;
+            } else {
+                console.log(" \n Please enter a valid number")
+                return false;
+            }
+        }
     },
     {
         type: 'list',
@@ -40,21 +87,69 @@ const engineerQuestions = [
         type: 'input',
         message: 'Engineer Name: ',
         name: 'engineerName',
+        //Validates strings with letters and spaces only
+        validate: function (engineerName) {
+  
+            valid = /^[A-Za-z\s]*$/g.test(engineerName)
+
+            if (valid) {
+                return true;
+            } else {
+                console.log(" \n Please enter a valid name")
+                return false;
+            }
+        }
     },
     {
         type: 'input',
         message: 'Employee ID: ',
         name: 'engineerId',
+        //Validates strings with only numbers
+        validate: function (engineerId) {
+  
+            valid = /^[0-9]+$/g.test(engineerId)
+
+            if (valid) {
+                return true;
+            } else {
+                console.log(" \n Please enter a valid number")
+                return false;
+            }
+        }
     },
     {
         type: 'input',
         message: 'Email Address: ',
         name: 'engineerEmail',
+        //Validate function taken from https://gist.github.com/Amitabh-K/ae073eea3d5207efaddffde19b1618e8
+        validate: function (engineerEmail) {
+  
+            valid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(engineerEmail)
+
+            if (valid) {
+                return true;
+            } else {
+                console.log("\n Please enter a valid email")
+                return false;
+            }
+        }
     },
     {
         type: 'input',
         message: 'GitHub Username: ',
         name: 'engineerGithub',
+        //Validates strings with only letters and numbers, and no spaces
+        validate: function (engineerGithub) {
+  
+            valid = /^[A-Za-z0-9]*$/g.test(engineerGithub)
+
+            if (valid) {
+                return true;
+            } else {
+                console.log(" \n Please enter a valid username")
+                return false;
+            }
+        }
     },
     {
         type: 'list',
@@ -69,21 +164,69 @@ const internQuestions = [
         type: 'input',
         message: 'Intern Name: ',
         name: 'internName',
+        //Validates strings with spaces and letters only
+        validate: function (internName) {
+  
+            valid = /^[A-Za-z\s]*$/g.test(internName)
+
+            if (valid) {
+                return true;
+            } else {
+                console.log(" \n Please enter a valid name")
+                return false;
+            }
+        }
     },
     {
         type: 'input',
         message: 'Intern ID: ',
         name: 'internId',
+        //Validates strings with numbers only
+        validate: function (internId) {
+  
+            valid = /^[0-9]+$/g.test(internId)
+
+            if (valid) {
+                return true;
+            } else {
+                console.log(" \n Please enter a valid number")
+                return false;
+            }
+        }
     },
     {
         type: 'input',
         message: 'Email Address: ',
         name: 'internEmail',
+        //Validate function taken from https://gist.github.com/Amitabh-K/ae073eea3d5207efaddffde19b1618e8
+        validate: function (internEmail) {
+  
+            valid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(internEmail)
+
+            if (valid) {
+                return true;
+            } else {
+                console.log("\n Please enter a valid email")
+                return false;
+            }
+        }
     },
     {
         type: 'input',
         message: 'School: ',
         name: 'internSchool',
+        // Validates strings with letters and spaces only
+        validate: function (internSchool) {
+  
+            valid = /^[A-Za-z\s]*$/g.test(internSchool)
+
+            if (valid) {
+                return true;
+            } else {
+                console.log(" \n Please enter a valid school name")
+                return false;
+            }
+        }
     },
     {
         type: 'list',
@@ -93,22 +236,14 @@ const internQuestions = [
     },
 ];
 
-// const addNewQuestion = [
-//     {
-//         type: 'list',
-//         message: 'Add employee: ',
-//         choices: ['Engineer', 'Intern', 'I am finished building my team'],
-//         name: 'addEmployee'
-//     },
-// ]
-
+// employeeArray holds all new objects created by user input based off Employee class
 let employeeArray = [];
+
+// manager() starts off script with manager questions, then loops engineer and intern questions until user is done
+// adding members and finishes the html file 
 function manager() {
-    // let manager = new Promise((resolve, reject) => {
     inquirer
         .prompt(managerQuestions).then((response) => {
-            // console.log(response);
-            // console.log(response.addEmployee);
             employeeArray.push(new Manager(response.managerName, response.managerId, response.managerEmail, response.managerOffice));
             fs.writeFile('index1.html', managerHTML(response), (err) => {
                 if (err) {
@@ -117,26 +252,16 @@ function manager() {
             });
             return repeat(response);
         }).then(() => {
+            console.log('\nEnjoy your new team roster!');
             fs.appendFile('index1.html', footerHTML(), (err) => {
                 if (err) {
                     console.log(err);
                 }
             });
-            console.log('Enjoy your new team roster!');
-
-            //This is where to put string literal for html template
-            //bascically add html code and append to file for every individual employee you make
-            // for initial manager write to file starting lines of html including head, and then manager card
-            //then for every employee just the div bootstrap card with info filled in
-            //then at very end append to file the closing tags for body script, and html
-            // make function for write me for engineer and intern
-
-
-
-
-        })
+        });
 }
 
+// managerHTML() generates initial html file and adds card based off of user input for manager
 function managerHTML({managerName, managerId, managerEmail, managerOffice},) {
     return `<!DOCTYPE html>
     <html lang="en">
@@ -200,21 +325,21 @@ function managerHTML({managerName, managerId, managerEmail, managerOffice},) {
             <div class="row justify-content-center">`;
 }
 
+// engineer() function asks engineer questions, then adds html based off of user input
 function engineer() {
     return inquirer
         .prompt(engineerQuestions).then((response) => {
-            // console.log(response);
-            // console.log(response.addEmployee);
             employeeArray.push(new Engineer(response.engineerName, response.engineerId, response.engineerEmail, response.engineerGithub));
             fs.appendFile('index1.html', engineerHTML(response), (err) => {
                 if (err) {
                     console.log(err);
                 }
-            })
+            });
             return repeat(response);
         });
 }
 
+// engineerHTML() function appends html to original file based off of user input
 function engineerHTML({engineerName, engineerId, engineerEmail, engineerGithub}) {
     return `           
     <div class="col">
@@ -231,6 +356,8 @@ function engineerHTML({engineerName, engineerId, engineerEmail, engineerGithub})
     </div>`;
 }
 
+// repeat() function repeats either the engineer or intern questions based off of response from adding team members
+// if user selects finished with building team, the script will end
 function repeat(response) {
     if (response.addEmployee === 'Engineer') {
         return engineer();
@@ -241,6 +368,7 @@ function repeat(response) {
     }
 }
 
+// intern() function goes through all the questions for adding an intern then appends a html file filled out with info
 function intern() {
     return inquirer
         .prompt(internQuestions).then((response) => {
@@ -251,11 +379,12 @@ function intern() {
                 if (err) {
                     console.log(err);
                 }
-            })
+            });
             return repeat(response);
         });
 }
 
+// internHTML() function appends intern data to html file
 function internHTML({internName, internId, internEmail, internSchool}) {
     return `            
     <div class="col">
@@ -269,9 +398,10 @@ function internHTML({internName, internId, internEmail, internSchool}) {
                 </div>
             </div>
         </section>
-    </div>`
+    </div>`;
 }
 
+// footerHTML() function appends the final closing tags to the html file
 function footerHTML() {
     return `        
     </div>
@@ -287,15 +417,9 @@ function footerHTML() {
 
 </body>
 <script src="../index.js"></script>
-</html>`
+</html>`;
 }
 
 
+// manager() starts entire script
 manager();
-// console.log(employeeArray);
-// engineer();
-
-
-
-
-// fs.writeFile('/dist/index.html')
