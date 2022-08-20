@@ -28,6 +28,10 @@ Simply type in your response to each question. If your response is invalid, for 
 Picture detailing filled out manager details, and option to add another team member of finish build:
 <img width="342" alt="Screen Shot 2022-08-19 at 1 36 30 PM" src="https://user-images.githubusercontent.com/103666997/185703374-f234e9a3-989f-4daf-993a-ae0d5b2398bd.png">
 
+Picture of Generated HTML File With Filled Out Applicant Information:
+![teamRoster](https://user-images.githubusercontent.com/103666997/185756017-78f88885-e26b-42c1-8e8f-a5da22fac3d5.png)
+
+
 ## Video Walkthrough:
 Video showing unit tests for classes passing and demonstration of initializing and moving through application.
 (https://drive.google.com/file/d/1N8PmKYrSeagcHV_KaMuaFHNgDWgbJ8io/view?usp=sharing)
